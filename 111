@@ -1,0 +1,27 @@
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import kotlin.math.sqrt
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val sideAInput = findViewById<EditText>(R.id.sideAInput)
+        val sideBInput = findViewById<EditText>(R.id.sideBInput)
+        val calculateButton = findViewById<Button>(R.id.calculateButton)
+
+        calculateButton.setOnClickListener {
+            val sideA = sideAInput.text.toString().toDouble()
+            val sideB = sideBInput.text.toString().toDouble()
+
+            val hypotenuse = sqrt(sideA * sideA + sideB * sideB)
+            val resultText = "Длина гипотенузы: $hypotenuse"
+
+            Toast.makeText(this, resultText, Toast.LENGTH_SHORT).show()
+        }
+    }
+}
